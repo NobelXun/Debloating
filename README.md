@@ -47,4 +47,4 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./libFLAC.so.12
 
 ### environment
 
-This project is based on Ubuntu 18.04 system, the kernel source version is 5.4.273
+the kernel source version is 5.4.273
