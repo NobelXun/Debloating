@@ -766,7 +766,6 @@ void free_select_struct(int index) {
         printk(KERN_ALERT "The index is invalid\n");
         return;
     }
-	int i, j;
 	kfree(select_data[index]->test_res);
 	select_data[index]->test_res = NULL;
 	kfree(select_data[index]->so_res);
@@ -781,25 +780,9 @@ void free_select_struct(int index) {
 	}
 	kfree(select_data[index]->select_cluster);
 	select_data[index]->select_cluster = NULL;
-	// fixup info
-	if (select_data[index]->my_ran->fixup_array) {
-		vfree(select_data[index]->my_ran->fixup_array);
-	}
-	for (i = 0; i < select_data[index]->sum_page; i++) {
-		if (select_data[index]->page_array[i]) {
-			kfree(select_data[index]->page_array[i]);
-			select_data[index]->page_array[i] = NULL;
-		}
-	}
 	// randam_aaray
 	kfree(select_data[index]->page_array);
 	select_data[index]->page_array = NULL;
-	kfree(select_data[index]->my_ran->random_array);
-	select_data[index]->my_ran->random_array = NULL;
-	kfree(select_data[index]->my_ran->myran_vma_array);
-	select_data[index]->my_ran->myran_vma_array = NULL;
-	kfree(select_data[index]->my_ran);
-	select_data[index]->my_ran = NULL;
 	// vmf info
 	kfree(select_data[index]->vma_infos);
 	select_data[index]->vma_infos = NULL;
