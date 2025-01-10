@@ -762,6 +762,7 @@ static inline void check_stack_usage(void) {}
 
 
 void free_select_struct(int index) {
+	int i;
     if (index < 0 || index >= select_infos_num || !select_data[index]) {
         printk(KERN_ALERT "The index is invalid\n");
         return;
