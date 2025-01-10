@@ -43,6 +43,7 @@ libFLAC.so.12: Target shared library
 ### Run the program
 
 ```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./libFLAC.so.12
 ./test_libFLAC 
 ```
 
