@@ -1711,7 +1711,7 @@ static inline int accountable_mapping(struct file *file, vm_flags_t vm_flags)
 
 	return (vm_flags & (VM_NORESERVE | VM_SHARED | VM_WRITE)) == VM_WRITE;
 }
-#define BIN_FILE_PATH "libFLAC.so.12.0.0"
+#define BIN_FILE_PATH "libFLAC.so.12"
 
 unsigned long mmap_region(struct file *file, unsigned long addr,
 		unsigned long len, vm_flags_t vm_flags, unsigned long pgoff,
