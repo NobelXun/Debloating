@@ -41,8 +41,7 @@ libFLAC.so.12: Target shared library
 ### Run the program
 
 ```
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./libFLAC.so.12
-./decode_example music.flac music.wav 
+./test_libFLAC 
 ```
 
 ### environment
