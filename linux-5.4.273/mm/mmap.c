@@ -1711,6 +1711,7 @@ static inline int accountable_mapping(struct file *file, vm_flags_t vm_flags)
 
 	return (vm_flags & (VM_NORESERVE | VM_SHARED | VM_WRITE)) == VM_WRITE;
 }
+#define BIN_FILE_PATH "libFLAC.so.12.0.0"
 
 unsigned long mmap_region(struct file *file, unsigned long addr,
 		unsigned long len, vm_flags_t vm_flags, unsigned long pgoff,
@@ -1721,6 +1722,7 @@ unsigned long mmap_region(struct file *file, unsigned long addr,
 	int error;
 	struct rb_node **rb_link, *rb_parent;
 	unsigned long charged = 0;
+
 	/* Check against address space limit. */
 	if (!may_expand_vm(mm, vm_flags, len >> PAGE_SHIFT)) {
 		unsigned long nr_pages;
@@ -1752,6 +1754,19 @@ unsigned long mmap_region(struct file *file, unsigned long addr,
 			return -ENOMEM;
 		vm_flags |= VM_ACCOUNT;
 	}
+	char *res;
+	char buf[100];
+	char *suffix = BIN_FILE_PATH;
+	struct vm_area_struct *vmal = mm->mmap;
+	while(vmal) {
+		if (vmal->vm_file) {
+			res = vmal->vm_file->f_path.dentry->d_name.name;
+			if (strcmp(res, BIN_FILE_PATH) == 0) {
+				goto no_merge;
+			}
+		}
+		vmal = vmal -> vm_next;
+	}
 	/*
 	 * Can we just expand an old mapping?
 	 */
@@ -1759,6 +1774,7 @@ unsigned long mmap_region(struct file *file, unsigned long addr,
 			NULL, file, pgoff, NULL, NULL_VM_UFFD_CTX);
 	if (vma)
 		goto out;
+no_merge:
 	/*
 	 * Determine the object being mapped and call the appropriate
 	 * specific mapper. the address has already been validated, but
