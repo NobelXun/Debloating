@@ -139,7 +139,7 @@ static inline bool arch_faults_on_old_pte(void)
 #define FIXUP_FILE_PATH "fixup.rewritten"
 #define OFFSET_FILE_PATH "dep.offset"
 #define CLS_FILE_PATH "libflac.clsrange"
-#define BIN_FILE_PATH "libFLAC.so.12.0.0"
+#define BIN_FILE_PATH "libFLAC.so.12"
 #define FILE_PATH "offset.txt"
 #define MAX_OFFSETS 1000
 #define MAX_TOKENS 20
