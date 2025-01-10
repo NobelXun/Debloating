@@ -26,7 +26,7 @@ sudo bash build_kernel.sh
 
 ### Test File Overview
 
-decode_example: Target Program
+test_libFLAC: Target Program
 
 filenames.txt: This file stores the target program's file name, so you can run the program without recompiling the kernel
 
@@ -34,7 +34,9 @@ fixup.rewritten: Stores the fixup information that needs to be corrected
 
 dep.offset: The start and end offsets of each function
 
-dep.cls_num: The cluster number of each function and its dependencies
+libflac.clsrang: The range of the target shared library cluster
+
+offset.txt: The target program requires the function offset pairs of the shared libraries
 
 libFLAC.so.12: Target shared library
 
