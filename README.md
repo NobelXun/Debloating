@@ -8,6 +8,8 @@ File Description:
 
 /linux-5.4.273/mm/memory.c: Core files for randomization and debloating
 
+/linux-5.4.273/mm/mmap.c: Prevent modification of files between new vma and old vma
+
 /linux-5.4.273/kernel/exit.c: Because global variables are created in the memory.c file, the file needs to be released when the target process exits
 
 /linux-5.4.273/include/linux/select_memory.h: The structures that need to be used are uniformly declared in this header file
